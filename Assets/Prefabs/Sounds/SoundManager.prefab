@@ -49,5 +49,5 @@ MonoBehaviour:
   _soundEffect: {fileID: 6798095121872226077, guid: 3e5a9f5933d8f6a428f24de7255ffd16, type: 3}
   _poolCount: 5
   _soundGroups:
-  - SoundDataBase: {fileID: 0}
+  - SoundDataBase: {fileID: 11400000, guid: 649b841a2a8e1dd42a26ab2d059a0cf8, type: 2}
     SoundGroupID: 0
