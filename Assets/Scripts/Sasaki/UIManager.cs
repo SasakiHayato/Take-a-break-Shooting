@@ -43,7 +43,7 @@ public class UIManager : MonoBehaviour
         GameObject panel = Instantiate(uiData.Panel.gameObject);
         if (_saveObj != null)
         {
-            Destroy(_saveObj.gameObject);
+            Destroy(_saveObj);
             _saveObj = panel;
         }
         else
@@ -52,5 +52,8 @@ public class UIManager : MonoBehaviour
         }
         
         _saveObj.transform.SetParent(canvas.transform);
+        RectTransform rect = _saveObj.GetRect();
+        rect.localScale = Vector2.one;
+        rect.anchoredPosition = Vector3.zero;
     }
 }
