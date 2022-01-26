@@ -4,9 +4,9 @@ using UnityEngine;
 
 public enum GameState
 {
-    Title,
-    InGame,
-    Result,
+    Title = 0,
+    InGame = 1,
+    Result = 2,
 }
 
 public class GameManager : MonoBehaviour
