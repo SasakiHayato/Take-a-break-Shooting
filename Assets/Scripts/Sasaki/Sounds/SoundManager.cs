@@ -30,7 +30,7 @@ public class SoundManager : MonoBehaviour
     }
 
     ObjectPool<SoundEffect> _soundPool;
-    List<SoundEffect> _loopSounds;
+    List<SoundEffect> _loopSounds = new List<SoundEffect>();
 
     void Awake()
     {

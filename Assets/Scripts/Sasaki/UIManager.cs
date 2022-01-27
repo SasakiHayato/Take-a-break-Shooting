@@ -15,7 +15,51 @@ public class UIManager : MonoBehaviour
         public Image Panel;
     }
 
+    private static UIManager _instance = null;
+    public static UIManager Instance => _instance;
+
+    GameObject _canvas;
+
     GameObject _saveObj = null;
+    Image _rightPanel = null;
+
+    void Awake()
+    {
+        _instance = this;
+        _canvas = GameObject.Find(_canvasName);
+        SetRightPanel();
+    }
+
+    void SetRightPanel()
+    {
+        GameObject obj = new GameObject("RightPanel");
+        _rightPanel = obj.AddComponent<Image>();
+        _rightPanel.transform.SetParent(_canvas.transform);
+        _rightPanel.raycastTarget = false;
+        Color color = _rightPanel.color;
+        color = Color.black;
+        color.a = 0;
+        _rightPanel.color = color;
+
+        RectTransform rect = _rightPanel.GetRect();
+        rect.anchorMin = Vector2.zero;
+        rect.anchorMax = Vector2.one;
+        rect.offsetMin = Vector2.zero;
+        rect.offsetMax = Vector2.zero;
+    }
+
+    /// <summary>
+    /// RightPanelのAlfa値が変更された際に呼ぶ。
+    /// </summary>
+    /// <param name="rate">Alfa値の割合</param>
+    public void UpdateRightPanel(float rate)
+    {
+        float a = Mathf.Lerp(0, 0.7f, rate);
+        Color color = _rightPanel.color;
+        color.a = a;
+        _rightPanel.color = color;
+        _rightPanel.GetRect().SetAsLastSibling();
+    }
 
     /// <summary>
     /// ステートが更新される際に呼ぶ。
@@ -23,8 +67,7 @@ public class UIManager : MonoBehaviour
     /// <param name="state">現在のGameState</param>
     public void UpdateGameState(GameState state)
     {
-        GameObject canvas = GameObject.Find(_canvasName);
-        SetPanel(_uiDatas.First(p => p.State == state), canvas);
+        SetPanel(_uiDatas.First(p => p.State == state), _canvas);
     }
 
     /// <summary>

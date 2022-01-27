@@ -17,6 +17,6 @@ MonoBehaviour:
     ID: 0
     SoundType: 0
     Clip: {fileID: 8300000, guid: 0b1bed404233ccc498f9d9ecdec7265e, type: 3}
-    Volume: 0.498
+    Volume: 0.5
     SpatialBlend: 0
     Loop: 1
